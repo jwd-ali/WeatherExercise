@@ -31,6 +31,13 @@
 		E3A90775254031DC009127E7 /* WeatherRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A90774254031DC009127E7 /* WeatherRepository.swift */; };
 		E3A90778254034AB009127E7 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A90777254034AB009127E7 /* LocationManager.swift */; };
 		E3A9077C2540BD5C009127E7 /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A9077B2540BD5C009127E7 /* WeatherViewModel.swift */; };
+		E3EA611E2542009900477C77 /* CurvedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EA611D2542009900477C77 /* CurvedView.swift */; };
+		E3EA61202542033F00477C77 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EA611F2542033F00477C77 /* UIColor+Extension.swift */; };
+		E3EA61222542037000477C77 /* Theme.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3EA61212542037000477C77 /* Theme.xcassets */; };
+		E3EA61252542143A00477C77 /* HourlyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EA61242542143900477C77 /* HourlyCollectionViewCell.swift */; };
+		E3EA61272542146600477C77 /* HourlyCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EA61262542146600477C77 /* HourlyCollectionViewCellViewModel.swift */; };
+		E3EA612A25421DDA00477C77 /* DailyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EA612925421DDA00477C77 /* DailyTableViewCell.swift */; };
+		E3EA612C25421E1D00477C77 /* DailyTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EA612B25421E1D00477C77 /* DailyTableViewCellViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +88,13 @@
 		E3A90774254031DC009127E7 /* WeatherRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherRepository.swift; sourceTree = "<group>"; };
 		E3A90777254034AB009127E7 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		E3A9077B2540BD5C009127E7 /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
+		E3EA611D2542009900477C77 /* CurvedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurvedView.swift; sourceTree = "<group>"; };
+		E3EA611F2542033F00477C77 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		E3EA61212542037000477C77 /* Theme.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Theme.xcassets; sourceTree = "<group>"; };
+		E3EA61242542143900477C77 /* HourlyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyCollectionViewCell.swift; sourceTree = "<group>"; };
+		E3EA61262542146600477C77 /* HourlyCollectionViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyCollectionViewCellViewModel.swift; sourceTree = "<group>"; };
+		E3EA612925421DDA00477C77 /* DailyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTableViewCell.swift; sourceTree = "<group>"; };
+		E3EA612B25421E1D00477C77 /* DailyTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTableViewCellViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,6 +200,7 @@
 		E3551D79253ECC6900D098DC /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E3EA61212542037000477C77 /* Theme.xcassets */,
 				E3551D50253ECAC000D098DC /* Assets.xcassets */,
 				E3551D55253ECAC000D098DC /* Info.plist */,
 			);
@@ -195,8 +210,11 @@
 		E3551D7B253ECC8100D098DC /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				E3EA611C2542007100477C77 /* CustomView */,
 				E3551D4B253ECABE00D098DC /* WeatherViewController.swift */,
 				E3A9077B2540BD5C009127E7 /* WeatherViewModel.swift */,
+				E3EA612825421DB300477C77 /* TableViewCell */,
+				E3EA61232542141200477C77 /* CollectionViewCell */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -233,6 +251,7 @@
 			isa = PBXGroup;
 			children = (
 				E3551D9A253EEF3200D098DC /* Double+Extenstion.swift */,
+				E3EA611F2542033F00477C77 /* UIColor+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -294,6 +313,32 @@
 				E3A90777254034AB009127E7 /* LocationManager.swift */,
 			);
 			path = Manager;
+			sourceTree = "<group>";
+		};
+		E3EA611C2542007100477C77 /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				E3EA611D2542009900477C77 /* CurvedView.swift */,
+			);
+			path = CustomView;
+			sourceTree = "<group>";
+		};
+		E3EA61232542141200477C77 /* CollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				E3EA61242542143900477C77 /* HourlyCollectionViewCell.swift */,
+				E3EA61262542146600477C77 /* HourlyCollectionViewCellViewModel.swift */,
+			);
+			path = CollectionViewCell;
+			sourceTree = "<group>";
+		};
+		E3EA612825421DB300477C77 /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				E3EA612925421DDA00477C77 /* DailyTableViewCell.swift */,
+				E3EA612B25421E1D00477C77 /* DailyTableViewCellViewModel.swift */,
+			);
+			path = TableViewCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -400,6 +445,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E3EA61222542037000477C77 /* Theme.xcassets in Resources */,
 				E3551D54253ECAC000D098DC /* LaunchScreen.storyboard in Resources */,
 				E3551D51253ECAC000D098DC /* Assets.xcassets in Resources */,
 			);
@@ -426,13 +472,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E3EA61272542146600477C77 /* HourlyCollectionViewCellViewModel.swift in Sources */,
 				E3A90775254031DC009127E7 /* WeatherRepository.swift in Sources */,
 				E3551DAE253F5C3100D098DC /* DequeueInitializable.swift in Sources */,
 				E3551D80253ECCFB00D098DC /* LayoutAttributes.swift in Sources */,
+				E3EA61252542143A00477C77 /* HourlyCollectionViewCell.swift in Sources */,
+				E3EA61202542033F00477C77 /* UIColor+Extension.swift in Sources */,
 				E3551D4C253ECABE00D098DC /* WeatherViewController.swift in Sources */,
 				E3551DBA253F66FE00D098DC /* APIClient.swift in Sources */,
 				E3A9077C2540BD5C009127E7 /* WeatherViewModel.swift in Sources */,
 				E3551D87253ECE5E00D098DC /* UIStackViewFactory.swift in Sources */,
+				E3EA612C25421E1D00477C77 /* DailyTableViewCellViewModel.swift in Sources */,
 				E3551D7E253ECCD600D098DC /* Layouts.swift in Sources */,
 				E3551DBC253F673300D098DC /* Reachability.swift in Sources */,
 				E3551D98253EE8BA00D098DC /* WeatherModel.swift in Sources */,
@@ -442,7 +492,9 @@
 				E3551DB2253F5F7200D098DC /* WeatherNetworkRouter.swift in Sources */,
 				E3551DB8253F664F00D098DC /* WeatherService.swift in Sources */,
 				E3551D9B253EEF3200D098DC /* Double+Extenstion.swift in Sources */,
+				E3EA611E2542009900477C77 /* CurvedView.swift in Sources */,
 				E3551D9D253F587A00D098DC /* AppError.swift in Sources */,
+				E3EA612A25421DDA00477C77 /* DailyTableViewCell.swift in Sources */,
 				E3551D85253ECE2400D098DC /* UIImageViewFactory.swift in Sources */,
 				E3A90778254034AB009127E7 /* LocationManager.swift in Sources */,
 				E3551D83253ECE0600D098DC /* UILabelFactory.swift in Sources */,

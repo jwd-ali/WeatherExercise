@@ -139,6 +139,7 @@ struct Flags: Codable {
 
 // MARK: - Hourly
 struct Hourly: Codable {
+    
     let summary: String?
     let icon: Icon?
     let data: [Currently]?
@@ -147,7 +148,9 @@ struct Hourly: Codable {
 
 // Segregated Protocols to implement interface segregation
 protocol SegregatedWeatherModel {
-    var currently: Currently? {get}
-    var hourly: Hourly? {get}
-    var daily: Daily? {get}
+    var currently: Currently? { get }
+    var hourly: Hourly? { get }
+    var daily: Daily? { get }
 }
+
+

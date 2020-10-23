@@ -26,4 +26,8 @@ extension Double {
         
         return dateFormatter.string(from: date)
     }
+    
+    func convertFahrenheitToCelsius() -> Double {
+        return (self - 32) / 1.8
+    }
 }

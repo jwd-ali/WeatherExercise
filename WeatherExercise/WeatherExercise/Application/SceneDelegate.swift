@@ -22,7 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.windowScene = windowScene
       let vm = WeatherViewModel(locationHandler: LocationManager(), respostry: WeatherRepository())
         let navController = UINavigationController(rootViewController: WeatherViewController(viewModel: vm))
-        
+        navController.navigationBar.isHidden = true
         window?.rootViewController = navController
         window?.makeKeyAndVisible()
     }
