@@ -23,11 +23,11 @@ This test project is written in easily-extendable architecture (MVVM) and is bui
 
 ### 🎧  Dark Mode iPhone ###
 <p align="center">
-<img src="https://github.com/jwd-ali/MobileExtercise/blob/master/images/Screenshot%202020-09-25%20at%203.17.08%20PM.png" width="370" title="home">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/jwd-ali/MobileExtercise/blob/master/images/Simulator%20Screen%20Shot%20-%20iPhone%2011%20Pro%20Max%20-%202020-09-25%20at%2015.16.47.png" width="370" title="Netwok error"></p>
+<img src="https://github.com/jwd-ali/WeatherExercise/blob/main/Images/Simulator%20Screen%20Shot%20-%20iPhone%2011%20Pro%20Max%20-%202020-10-26%20at%2001.44.57.png" width="370" title="home">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/jwd-ali/WeatherExercise/blob/main/Images/Simulator%20Screen%20Shot%20-%20iPhone%2011%20Pro%20Max%20-%202020-10-26%20at%2001.45.03.png" width="370" title="weather">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/jwd-ali/WeatherExercise/blob/main/Images/Simulator%20Screen%20Shot%20-%20iPhone%2011%20Pro%20Max%20-%202020-10-26%20at%2001.45.07.png" width="370" title="weather details"></p>
 
 ### 🎧  Light Mode iPhone ###
 <p align="center">
-<img src="https://github.com/jwd-ali/MobileExtercise/blob/master/images/Screenshot%202020-09-25%20at%203.14.21%20PM.png" width="370" title="home">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/jwd-ali/MobileExtercise/blob/master/images/Screenshot%202020-09-25%20at%203.16.30%20PM.png" width="370" title="Netwok error"></p>
+<img src="https://github.com/jwd-ali/WeatherExercise/blob/main/Images/Simulator%20Screen%20Shot%20-%20iPhone%2011%20Pro%20Max%20-%202020-10-26%20at%2001.44.12.png" width="370" title="home">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/jwd-ali/WeatherExercise/blob/main/Images/Simulator%20Screen%20Shot%20-%20iPhone%2011%20Pro%20Max%20-%202020-10-26%20at%2001.44.22.png" width="370" title="weather">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/jwd-ali/WeatherExercise/blob/main/Images/Simulator%20Screen%20Shot%20-%20iPhone%2011%20Pro%20Max%20-%202020-10-26%20at%2001.44.27.png" width="370" title="weather details"></p>
 
 ### Thank You ###
 # [Jawad Ali](https://github.com/jwd-ali/IOS-Portfolio)
