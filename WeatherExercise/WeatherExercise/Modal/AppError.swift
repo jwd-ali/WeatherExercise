@@ -25,3 +25,13 @@ extension AppError {
     }
 }
 
+struct AlertAction {
+    let buttonTitle: String
+    let handler: (() -> Void)?
+}
+
+struct AppAlert {
+    let title: String
+    let message: String?
+    let actions: [AlertAction]
+}

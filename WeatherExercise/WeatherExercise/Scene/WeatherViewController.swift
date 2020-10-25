@@ -20,7 +20,7 @@ class WeatherViewController: UIViewController {
     
     private lazy var cityLabel = UILabelFactory.createUILabel(with: .universalColor2, font: UIFont.systemFont(ofSize: 30, weight: .heavy), alignment: .center)
     
-    private lazy var summeryLabel = UILabelFactory.createUILabel(with: .universalColor2, font: UIFont.systemFont(ofSize: 12, weight: .medium), alignment: .center)
+    private lazy var summeryLabel = UILabelFactory.createUILabel(with: .universalColor2, font: UIFont.systemFont(ofSize: 14, weight: .medium), alignment: .center)
     
     private lazy var stack = UIStackViewFactory.createStackView(with: .horizontal, alignment: .center, distribution: .fill, spacing: 5, arrangedSubviews: [icon, tempretureLabel])
     
@@ -68,6 +68,13 @@ class WeatherViewController: UIViewController {
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
+    }()
+    
+    private lazy var activityIndicator: UIActivityIndicatorView = {
+        let activity = UIActivityIndicatorView()
+        activity.translatesAutoresizingMaskIntoConstraints = false
+        activity.style = .large
+        return activity
     }()
     
     // MARK: - Properties
@@ -179,6 +186,46 @@ private extension WeatherViewController {
         viewModel.iconBinder.bind({[weak self] icon in DispatchQueue.main.async { self?.icon.image = icon.isEmpty ? nil :  UIImage(named: icon)?.withRenderingMode(.alwaysTemplate) }})
         viewModel.reloadCollectionViewViewBinder.bind({ [weak self] in DispatchQueue.main.async { self?.collectionView.reloadData() }})
         viewModel.reloadTableViewBinder.bind({ [weak self] in DispatchQueue.main.async { self?.tableView.reloadData() }})
+        
+        viewModel.isLoading.bind { [weak self] (isLoading) in
+            guard let self = self else {return}
+            DispatchQueue.main.async {
+                self.curvedView.isHidden = isLoading
+                self.forcastLabel.isHidden = isLoading
+                self.refreshButton.isHidden = isLoading
+                self.upperSeperator.isHidden = isLoading
+                
+            if isLoading {
+                self.view.addSubview(self.activityIndicator)
+                self.activityIndicator
+                .centerInSuperView()
+                self.activityIndicator.startAnimating()
+            } else {
+                self.activityIndicator.stopAnimating()
+                self.activityIndicator.removeFromSuperview()
+                }
+            }
+        }
+        
+        viewModel.onShowError.bind({[weak self] (alert) in
+            guard let alert = alert else { return }
+            DispatchQueue.main.async {
+                let alertController = UIAlertController(title: alert.title,
+                                                        message: alert.message,
+                                                        preferredStyle: .alert)
+                for action in alert.actions {
+                    alertController.addAction(UIAlertAction(title: action.buttonTitle,
+                    style: .default,
+                    handler: { _ in action.handler?() }))
+                }
+                
+                self?.present(alertController, animated: true, completion: nil)
+            }
+        })
+        
+        viewModel.openSettings.bind({success in
+            guard let _ = success else {return}
+            DispatchQueue.main.async { UIApplication.openAppSettings() }})
     }
 }
 

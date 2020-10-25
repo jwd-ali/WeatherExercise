@@ -19,12 +19,15 @@ protocol WeatherCellItem {
 }
 
 protocol WeatherViewModelType {
+    var isLoading : Binder<Bool> { get }
     var cityBinder: Binder<String> { get }
     var summeryBinder: Binder<String> { get }
     var tempretureBinder: Binder<String> { get }
     var iconBinder: Binder<String> { get }
     var reloadTableViewBinder: Binder<Void> { get }
     var reloadCollectionViewViewBinder: Binder<Void> { get }
+    var openSettings:Binder<Bool?> { get }
+    var onShowError:Binder<AppAlert?> { get }
     func numberOfRowsForTableView()-> Int
     func numberOfRowsForCollectionView()->Int
     func tableViewModel(at indexPath: IndexPath)-> WeatherCellItem
@@ -60,18 +63,34 @@ class WeatherViewModel: WeatherViewModelType {
     var iconBinder = Binder("")
     var reloadTableViewBinder = Binder(())
     var reloadCollectionViewViewBinder = Binder(())
+    var isLoading = Binder(false)
+    var onShowError = Binder<AppAlert?>(nil)
+    var openSettings = Binder<Bool?>(nil)
     
     //MARK:- Initializer
     init(locationHandler: LocationHandler, respostry:WeatherRepositoryType) {
         self.respostry = respostry
         self.locationHandler = locationHandler
         
+         isLoading.value = true
         self.locationHandler?.getCurrentLocation {[weak self] (location, error) in
             if let locationError = error {
-                print(locationError)
+                
+                switch locationError {
+                case .accessDeniedByUser, .locationServicesNotEnableOnDevice:
+                    let alert =  AppAlert(title: "Access Denied", message: "You need to turn on Location Service to use this app! Please go to Settings and grant Location permission to Weather.", actions: [AlertAction(buttonTitle: "Go to Settings", handler: {self?.openSettings.set(to: (true))})])
+                    self?.onShowError.value = alert
+                case .failed:
+                    let alert =  AppAlert(title: "Please Grant Access", message: "To view your current location weather you need to give me Location permission.", actions: [AlertAction(buttonTitle: "Grant permission", handler: {self?.locationHandler?.requestPermission()})])
+                    self?.onShowError.value = alert
+                case .notDetermined:
+                    self?.locationHandler?.requestPermission()
+                }
+              
                 return
             }
             
+           
             if let local = location {
                 self?.latitude = local.coordinate.latitude
                 self?.longitude = local.coordinate.longitude
@@ -105,6 +124,7 @@ private extension WeatherViewModel {
     
     func getWeatherDetails() {
         self.respostry.getWeatherDetails(latitude: latitude, longitude: (longitude)) { [weak self] (result) in
+            self?.isLoading.value = false
             self?.parseResponse(result:result)
         }
     }
@@ -112,7 +132,8 @@ private extension WeatherViewModel {
     func parseResponse(result: Result<WeatherModel,AppError>) {
         switch result {
         case .failure(let error):
-            print("error:\(error)")
+            let alert =  AppAlert(title: "Error", message: error.error, actions: [AlertAction(buttonTitle: "OK", handler: nil)])
+            self.onShowError.value = alert
         case .success( let model):
             self.weatherObject = model
             bindValues()
@@ -121,12 +142,12 @@ private extension WeatherViewModel {
     }
     
     func fetchAndBindCity()  {
-        self.locationHandler?.fetchCityAndCountry(lattitude: latitude, longitude: longitude, completion:  {[weak self] (city, _, error) in if let getCity = city { self?.cityBinder.value = getCity } })
+        self.locationHandler?.fetchCityAndCountry(lattitude: latitude, longitude: longitude, completion:  {[weak self] (city, _, error) in if let getCity = city { self?.cityBinder.value = getCity.uppercased() } })
     }
 }
 private extension WeatherViewModel {
      func bindValues() {
-        summeryBinder.value = weatherObject?.currently?.summary ?? ""
+        summeryBinder.value = weatherObject?.currently?.summary?.lowercased() ?? ""
         tempretureBinder.value = ("\(self.weatherObject?.currently?.temperature?.convertFahrenheitToCelsius() ?? 0)°")
         iconBinder.value = weatherObject?.currently?.icon?.rawValue ?? ""
     }
@@ -173,5 +194,6 @@ extension WeatherViewModel {
 extension WeatherViewModel {
     func refreshButtonTapped() {
         getDetails()
+       
     }
 }

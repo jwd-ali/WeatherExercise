@@ -15,6 +15,7 @@ protocol LocationHandler {
     func getCurrentLocation( completion: @escaping LocationManagerBlock)
     func fetchCityAndCountry(lattitude: Double,longitude: Double, completion: @escaping (_ city: String?, _ country:  String?, _ error: Error?) -> ())
     func fetchCityAndCountry(from location: CLLocation, completion: @escaping (_ city: String?, _ country:  String?, _ error: Error?) -> ())
+    func requestPermission()
 }
 
 class LocationManager : NSObject, LocationHandler {
@@ -59,13 +60,12 @@ extension LocationManager : CLLocationManagerDelegate {
         switch status {
         case .denied,.restricted:
             completionBlock!(nil,LocationManagerCode.error.accessDeniedByUser)
-            
         case .authorizedWhenInUse, .authorizedAlways:
             locationManager.requestLocation()
         case .notDetermined:
+            completionBlock!(nil,LocationManagerCode.error.notDetermined)
+        @unknown default:
             completionBlock!(nil,LocationManagerCode.error.failed)
-        default:
-            completionBlock!(nil,LocationManagerCode.error.accessDeniedByUser)
         }
     }
     
@@ -91,6 +91,9 @@ extension LocationManager {
                        error)
         }
     }
+    func requestPermission() {
+        locationManager.requestWhenInUseAuthorization()
+    }
 }
 
 struct LocationManagerCode {
@@ -98,5 +101,6 @@ struct LocationManagerCode {
         case locationServicesNotEnableOnDevice
         case accessDeniedByUser
         case failed
+        case notDetermined
     }
 }
