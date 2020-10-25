@@ -26,9 +26,6 @@ extension DequeueInitializable where Self: UITableViewCell {
         return cell as! Self
     }
     
-    static func register(tableView: UITableView)  {
-        tableView.register(self, forCellReuseIdentifier: self.reuseableIdentifier)
-    }
 }
 
 extension DequeueInitializable where Self: UICollectionViewCell {
@@ -44,7 +41,4 @@ extension DequeueInitializable where Self: UICollectionViewCell {
         return cell as! Self
     }
     
-    static func register(collectionView: UICollectionView)  {
-        collectionView.register(self, forCellWithReuseIdentifier: self.reuseableIdentifier)
-    }
 }

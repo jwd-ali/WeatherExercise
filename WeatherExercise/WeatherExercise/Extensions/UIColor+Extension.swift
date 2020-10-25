@@ -37,6 +37,9 @@ public extension UIColor {
     
     static let universalColor5: UIColor = appColor(named: "universalcolor5")!
     
+    static let universalColor6: UIColor = appColor(named: "universalcolor6")!
+    
+    
     private static func appColor(named: String) -> UIColor?{
         #if TARGET_INTERFACE_BUILDER
         return UIColor.systemGray

@@ -8,6 +8,16 @@
 
 import Foundation
 extension Double {
+    
+    func twentyfourHours() -> String {
+        let dateFormatter = DateFormatter()
+        let date = Date(timeIntervalSince1970: self)
+        
+        // Returns date formatted as 24 hour time.
+        dateFormatter.dateFormat = "hh"
+        return dateFormatter.string(from: date)
+    }
+    
     func twelveHours() -> String {
         let dateFormatter = DateFormatter()
         let date = Date(timeIntervalSince1970: self)
@@ -27,7 +37,7 @@ extension Double {
         return dateFormatter.string(from: date)
     }
     
-    func convertFahrenheitToCelsius() -> Double {
-        return (self - 32) / 1.8
+    func convertFahrenheitToCelsius() -> Int {
+        return Int((self - 32) / 1.8)
     }
 }

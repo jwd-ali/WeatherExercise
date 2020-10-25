@@ -38,9 +38,9 @@ struct Alert: Codable {
 }
 
 // MARK: - Currently
-struct Currently: Codable {
+struct Currently: Codable, SegregatedCurrently {
     let time: Double?
-    let summary: Summary?
+    let summary: String?
     let icon: Icon?
     let precipIntensity, precipProbability, temperature, apparentTemperature: Double?
     let dewPoint, humidity, pressure, windSpeed: Double?
@@ -66,22 +66,6 @@ enum Icon: String, Codable {
     
 }
 
-enum Summary: String, Codable {
-    case lightRain = "Light Rain"
-    case mostlyCloudy = "Mostly Cloudy"
-    case overcast = "Overcast"
-    case possibleDrizzle = "Possible Drizzle"
-    case possibleLightRain = "Possible Light Rain"
-    case rain = "Rain"
-    case partlyCloudy = "Partly Cloudy"
-    case clear = "Clear"
-    case windy = "Windy and Overcast"
-    case humid = "Humid"
-    case humidMostlyCloudy = "Humid and Mostly Cloudy"
-    case humidOvercast = "Humid and Overcast"
-    case humidCloudy = "Humid and Partly Cloudy"
-}
-
 // MARK: - Daily
 struct Daily: Codable {
     let summary: String?
@@ -90,7 +74,7 @@ struct Daily: Codable {
 }
 
 // MARK: - Datum
-struct Datum: Codable {
+struct Datum: Codable, SegregatedDatum, SegregatedDetails {
     let time: Double?
     let summary: String?
     let icon: Icon?
@@ -139,7 +123,6 @@ struct Flags: Codable {
 
 // MARK: - Hourly
 struct Hourly: Codable {
-    
     let summary: String?
     let icon: Icon?
     let data: [Currently]?
@@ -154,3 +137,26 @@ protocol SegregatedWeatherModel {
 }
 
 
+protocol SegregatedDatum {
+    var time: Double? { get }
+    var icon: Icon? { get }
+    var temperatureLow: Double? { get }
+    var temperatureHigh: Double? { get }
+}
+
+protocol SegregatedCurrently {
+    var time: Double? { get }
+    var icon: Icon? { get }
+    var temperature: Double? { get }
+}
+
+protocol SegregatedDetails {
+    var sunriseTime: Double? { get }
+    var sunsetTime: Double? { get }
+    var precipProbability: Double? { get }
+    var humidity: Double? { get }
+    var windSpeed: Double? { get }
+    var pressure: Double? { get }
+    var visibility: Double? { get }
+    var uvIndex:Double? { get }
+}

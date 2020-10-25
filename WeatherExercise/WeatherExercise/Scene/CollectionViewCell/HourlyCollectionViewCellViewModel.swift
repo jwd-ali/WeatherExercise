@@ -8,19 +8,27 @@
 
 import Foundation
 protocol HourlyCollectionViewCellViewModelType {
-    func numberOfItems()-> Int
+    var timeBinder: Binder<String>{ get }
+    var iconBinder: Binder<String>{ get }
+    var tempretureBinder: Binder<String>{ get }
 }
 class HourlyCollectionViewCellViewModel: HourlyCollectionViewCellViewModelType {
-
-//MARK:- Properties
-    private let hourlyData : Hourly
-       
-       init(with hourly:Hourly) {
-           self.hourlyData = hourly
-       }
+    
+    //MARK:- Properties
+    private let hourlyData : SegregatedCurrently
+    var timeBinder = Binder("")
+    var iconBinder = Binder("")
+    var tempretureBinder = Binder("")
+    
+    init(with hourly:Currently) {
+        self.hourlyData = hourly
+        bindValues()
+    }
 }
-extension HourlyCollectionViewCellViewModel {
-    func numberOfItems()-> Int {
-        hourlyData.data?.count ?? 0
+private extension HourlyCollectionViewCellViewModel {
+    func bindValues() {
+        tempretureBinder.value = ("\(hourlyData.temperature?.convertFahrenheitToCelsius() ?? 0)°")
+        iconBinder.value = hourlyData.icon?.rawValue ?? ""
+        timeBinder.value = hourlyData.time?.twentyfourHours() ?? ""
     }
 }

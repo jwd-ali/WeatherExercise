@@ -38,6 +38,12 @@
 		E3EA61272542146600477C77 /* HourlyCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EA61262542146600477C77 /* HourlyCollectionViewCellViewModel.swift */; };
 		E3EA612A25421DDA00477C77 /* DailyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EA612925421DDA00477C77 /* DailyTableViewCell.swift */; };
 		E3EA612C25421E1D00477C77 /* DailyTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EA612B25421E1D00477C77 /* DailyTableViewCellViewModel.swift */; };
+		E3EA612E2542BC7300477C77 /* Binder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EA612D2542BC7300477C77 /* Binder.swift */; };
+		E3EA61412544457900477C77 /* SummeryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EA61402544457900477C77 /* SummeryTableViewCell.swift */; };
+		E3EA61432544458900477C77 /* SummeryTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EA61422544458900477C77 /* SummeryTableViewCellViewModel.swift */; };
+		E3EA61452544549100477C77 /* DetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EA61442544549100477C77 /* DetailTableViewCell.swift */; };
+		E3EA6147254454A600477C77 /* DetailTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EA6146254454A600477C77 /* DetailTableViewCellViewModel.swift */; };
+		E3EA61572544AA8F00477C77 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EA61562544AA8F00477C77 /* RoundedButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +101,12 @@
 		E3EA61262542146600477C77 /* HourlyCollectionViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyCollectionViewCellViewModel.swift; sourceTree = "<group>"; };
 		E3EA612925421DDA00477C77 /* DailyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTableViewCell.swift; sourceTree = "<group>"; };
 		E3EA612B25421E1D00477C77 /* DailyTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTableViewCellViewModel.swift; sourceTree = "<group>"; };
+		E3EA612D2542BC7300477C77 /* Binder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Binder.swift; sourceTree = "<group>"; };
+		E3EA61402544457900477C77 /* SummeryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummeryTableViewCell.swift; sourceTree = "<group>"; };
+		E3EA61422544458900477C77 /* SummeryTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummeryTableViewCellViewModel.swift; sourceTree = "<group>"; };
+		E3EA61442544549100477C77 /* DetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewCell.swift; sourceTree = "<group>"; };
+		E3EA6146254454A600477C77 /* DetailTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewCellViewModel.swift; sourceTree = "<group>"; };
+		E3EA61562544AA8F00477C77 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,7 +225,7 @@
 				E3EA611C2542007100477C77 /* CustomView */,
 				E3551D4B253ECABE00D098DC /* WeatherViewController.swift */,
 				E3A9077B2540BD5C009127E7 /* WeatherViewModel.swift */,
-				E3EA612825421DB300477C77 /* TableViewCell */,
+				E3EA612825421DB300477C77 /* TableViewCells */,
 				E3EA61232542141200477C77 /* CollectionViewCell */,
 			);
 			path = Scene;
@@ -243,6 +255,7 @@
 			children = (
 				E3551D97253EE8BA00D098DC /* WeatherModel.swift */,
 				E3551D9C253F587A00D098DC /* AppError.swift */,
+				E3EA612D2542BC7300477C77 /* Binder.swift */,
 			);
 			path = Modal;
 			sourceTree = "<group>";
@@ -319,6 +332,7 @@
 			isa = PBXGroup;
 			children = (
 				E3EA611D2542009900477C77 /* CurvedView.swift */,
+				E3EA61562544AA8F00477C77 /* RoundedButton.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -332,13 +346,41 @@
 			path = CollectionViewCell;
 			sourceTree = "<group>";
 		};
-		E3EA612825421DB300477C77 /* TableViewCell */ = {
+		E3EA612825421DB300477C77 /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				E3EA613F2544439800477C77 /* DetailsCell */,
+				E3EA613E2544438D00477C77 /* SummeryCell */,
+				E3EA613D2544436F00477C77 /* DailyCell */,
+			);
+			path = TableViewCells;
+			sourceTree = "<group>";
+		};
+		E3EA613D2544436F00477C77 /* DailyCell */ = {
 			isa = PBXGroup;
 			children = (
 				E3EA612925421DDA00477C77 /* DailyTableViewCell.swift */,
 				E3EA612B25421E1D00477C77 /* DailyTableViewCellViewModel.swift */,
 			);
-			path = TableViewCell;
+			path = DailyCell;
+			sourceTree = "<group>";
+		};
+		E3EA613E2544438D00477C77 /* SummeryCell */ = {
+			isa = PBXGroup;
+			children = (
+				E3EA61402544457900477C77 /* SummeryTableViewCell.swift */,
+				E3EA61422544458900477C77 /* SummeryTableViewCellViewModel.swift */,
+			);
+			path = SummeryCell;
+			sourceTree = "<group>";
+		};
+		E3EA613F2544439800477C77 /* DetailsCell */ = {
+			isa = PBXGroup;
+			children = (
+				E3EA61442544549100477C77 /* DetailTableViewCell.swift */,
+				E3EA6146254454A600477C77 /* DetailTableViewCellViewModel.swift */,
+			);
+			path = DetailsCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -473,6 +515,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				E3EA61272542146600477C77 /* HourlyCollectionViewCellViewModel.swift in Sources */,
+				E3EA612E2542BC7300477C77 /* Binder.swift in Sources */,
+				E3EA6147254454A600477C77 /* DetailTableViewCellViewModel.swift in Sources */,
+				E3EA61432544458900477C77 /* SummeryTableViewCellViewModel.swift in Sources */,
 				E3A90775254031DC009127E7 /* WeatherRepository.swift in Sources */,
 				E3551DAE253F5C3100D098DC /* DequeueInitializable.swift in Sources */,
 				E3551D80253ECCFB00D098DC /* LayoutAttributes.swift in Sources */,
@@ -488,12 +533,15 @@
 				E3551D98253EE8BA00D098DC /* WeatherModel.swift in Sources */,
 				E3551DB6253F64D000D098DC /* WeatherServiceRequest.swift in Sources */,
 				E3551D48253ECABE00D098DC /* AppDelegate.swift in Sources */,
+				E3EA61452544549100477C77 /* DetailTableViewCell.swift in Sources */,
 				E3551D4A253ECABE00D098DC /* SceneDelegate.swift in Sources */,
 				E3551DB2253F5F7200D098DC /* WeatherNetworkRouter.swift in Sources */,
 				E3551DB8253F664F00D098DC /* WeatherService.swift in Sources */,
 				E3551D9B253EEF3200D098DC /* Double+Extenstion.swift in Sources */,
 				E3EA611E2542009900477C77 /* CurvedView.swift in Sources */,
+				E3EA61412544457900477C77 /* SummeryTableViewCell.swift in Sources */,
 				E3551D9D253F587A00D098DC /* AppError.swift in Sources */,
+				E3EA61572544AA8F00477C77 /* RoundedButton.swift in Sources */,
 				E3EA612A25421DDA00477C77 /* DailyTableViewCell.swift in Sources */,
 				E3551D85253ECE2400D098DC /* UIImageViewFactory.swift in Sources */,
 				E3A90778254034AB009127E7 /* LocationManager.swift in Sources */,
