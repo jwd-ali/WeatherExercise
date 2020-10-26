@@ -104,3 +104,29 @@ struct LocationManagerCode {
         case notDetermined
     }
 }
+
+class MockLocationManager: LocationHandler {
+    
+    var location: CLLocation? = CLLocation(
+           latitude: 37.3317,
+           longitude: -122.0325086
+       )
+    
+    func getCurrentLocation(completion: @escaping LocationManagerBlock) {
+        completion(location, nil)
+    }
+    
+    func fetchCityAndCountry(lattitude: Double, longitude: Double, completion: @escaping (String?, String?, Error?) -> ()) {
+        completion("lahore","Pakistan",nil)
+    }
+    
+    func fetchCityAndCountry(from location: CLLocation, completion: @escaping (String?, String?, Error?) -> ()) {
+        completion("lahore","Pakistan",nil)
+    }
+    
+    func requestPermission() {
+        
+    }
+    
+    
+}

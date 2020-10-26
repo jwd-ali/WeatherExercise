@@ -19,8 +19,8 @@ class WeatherRepository: WeatherRepositoryType {
     }
 }
 
-//class WeatherRepositoryMocked: WeatherRepositoryType {
-//    func getWeatherDetails(latitude:Double, longitude:Double, completion: @escaping(Result<WeatherModel,AppError>)-> Void) {
-//        completion(.success(WeatherModel.mocked))
-//    }
-//}
+class WeatherRepositoryMocked: WeatherRepositoryType {
+    func getWeatherDetails(latitude:Double, longitude:Double, completion: @escaping(Result<WeatherModel,AppError>)-> Void) {
+        completion(.success(WeatherModel.mocked))
+    }
+}
