@@ -1,5 +1,5 @@
 <img src="https://github.com/jwd-ali/TidalTestProject/blob/master/images/header/header.png">
-<p><h1 align="left"> Weather Mobile Test Project in swift 5.1</h1></p>
+<p><h1 align="left"> Weather Mobile Test Project in swift 5.3</h1></p>
 <p><h4>Get Weather using darksky Api</h4></p>
 
 ___
@@ -14,8 +14,8 @@ This test project is written in easily-extendable architecture (MVVM) and is bui
 
 
 ### Technologies ###
-* Xcode 11.4
-* Swift(5.1) Latest
+* Xcode 11.7
+* Swift(5.3) Latest
 * All UI through code
 * SF Symbols
 * Support dark Mode and light mode
