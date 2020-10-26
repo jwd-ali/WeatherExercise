@@ -22,11 +22,11 @@ class SummeryTableViewCell: UITableViewCell, DequeueInitializable {
     }()
     
     private lazy var lowerSeperator: UIView = {
-           let view = UIView()
+        let view = UIView()
         view.backgroundColor = UIColor.universalColor6.withAlphaComponent(0.5)
-           view.translatesAutoresizingMaskIntoConstraints = false
-           return view
-       }()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
     
     //MARK:- Properties
     private var viewModel: SummeryTableViewCellViewModelType?
@@ -55,7 +55,7 @@ class SummeryTableViewCell: UITableViewCell, DequeueInitializable {
     }
     
 }
-
+//MARK:- Setup View
 private extension SummeryTableViewCell {
     func setupViews() {
         contentView.addSubview(upperSeperator)
@@ -64,7 +64,6 @@ private extension SummeryTableViewCell {
     }
     
     func setupConstraints() {
-        
         upperSeperator
             .alignEdgesWithSuperview([.top, .right, .left], constants:[30,20,20])
             .height(constant: 1)
@@ -77,10 +76,9 @@ private extension SummeryTableViewCell {
             .toBottomOf(summeryLabel, constant:20)
             .alignEdgesWithSuperview([.right, .left, .bottom], constants:[20,20,0])
             .height(constant: 1)
-        
     }
-    
 }
+//MARK:- Bind Values
 private extension SummeryTableViewCell {
     
     func bind() {

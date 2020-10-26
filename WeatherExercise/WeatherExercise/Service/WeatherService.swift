@@ -14,8 +14,8 @@ protocol WeatherServiceType {
 
 class WeatherService: WeatherServiceType {
     private let apiConvertible:ApiService = APIClient()
-
-     func fetchWeather(for latitude:Double, longitude:Double, completion: @escaping(Result<WeatherModel,AppError>) -> Void) {
+    
+    func fetchWeather(for latitude:Double, longitude:Double, completion: @escaping(Result<WeatherModel,AppError>) -> Void) {
         
         let request = WeatherServiceRequest(latitude: latitude, longitude: longitude)
         let router = WeatherNetworkRouter.getWeather(request)

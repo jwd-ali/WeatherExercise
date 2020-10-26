@@ -29,7 +29,7 @@ struct Alert: Codable {
     let time, expires: Double?
     let alertDescription: String?
     let uri: String?
-
+    
     enum CodingKeys: String, CodingKey {
         case title, regions, severity, time, expires
         case alertDescription = "description"
@@ -112,7 +112,7 @@ struct Flags: Codable {
     let meteoalarmLicense: String?
     let nearestStation: Double?
     let units: String?
-
+    
     enum CodingKeys: String, CodingKey {
         case sources
         case meteoalarmLicense = "meteoalarm-license"

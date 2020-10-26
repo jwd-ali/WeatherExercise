@@ -22,7 +22,7 @@ class LocationManager : NSObject, LocationHandler {
     private let locationManager: CLLocationManager
     private var completionBlock : LocationManagerBlock?
     
-     init(manager: CLLocationManager = CLLocationManager()) {
+    init(manager: CLLocationManager = CLLocationManager()) {
         locationManager = manager
         super.init()
     }
@@ -83,7 +83,7 @@ extension LocationManager {
                        error)
         }
     }
-     func fetchCityAndCountry(lattitude: Double,longitude: Double, completion: @escaping (_ city: String?, _ country:  String?, _ error: Error?) -> ()) {
+    func fetchCityAndCountry(lattitude: Double,longitude: Double, completion: @escaping (_ city: String?, _ country:  String?, _ error: Error?) -> ()) {
         let location = CLLocation(latitude: lattitude, longitude: longitude)
         CLGeocoder().reverseGeocodeLocation(location) { placemarks, error in
             completion(placemarks?.first?.locality,
@@ -108,9 +108,9 @@ struct LocationManagerCode {
 class MockLocationManager: LocationHandler {
     
     var location: CLLocation? = CLLocation(
-           latitude: 37.3317,
-           longitude: -122.0325086
-       )
+        latitude: 37.3317,
+        longitude: -122.0325086
+    )
     
     func getCurrentLocation(completion: @escaping LocationManagerBlock) {
         completion(location, nil)

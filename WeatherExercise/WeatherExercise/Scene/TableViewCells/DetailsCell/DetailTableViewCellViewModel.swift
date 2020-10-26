@@ -17,8 +17,6 @@ protocol DetailTableViewCellViewModelType {
     var pressureBinder: Binder<String>{ get }
     var visibilityBinder: Binder<String>{ get }
     var uvIndexBinder: Binder<String>{ get }
-  
-    
 }
 class DetailTableViewCellViewModel: DetailTableViewCellViewModelType, WeatherCellItem {
     
@@ -37,11 +35,13 @@ class DetailTableViewCellViewModel: DetailTableViewCellViewModelType, WeatherCel
     
     var type: WeatherCellItemType = .detailCell
     
+    //MARK:- Initialiser
     init(with details:SegregatedDetails) {
         self.details = details
         bindValues()
     }
 }
+//MARK:- Bind Values
 private extension DetailTableViewCellViewModel {
     func bindValues() {
         if let sunsetTime = details.sunsetTime { sunsetBinder.value = ("Sunset: \(sunsetTime.twelveHours())") }

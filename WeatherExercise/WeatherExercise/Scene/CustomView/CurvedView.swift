@@ -15,7 +15,7 @@ class CurvedView: UIView {
         let shape = CAShapeLayer()
         return shape
     }()
-
+    
     //MARK:- public properties
     public var color: UIColor = .blue {
         didSet {

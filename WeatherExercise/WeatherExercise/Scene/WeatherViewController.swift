@@ -28,7 +28,7 @@ class WeatherViewController: UIViewController {
     
     private lazy var icon = UIImageViewFactory.createImageView(mode: .scaleAspectFit, image: #imageLiteral(resourceName: "rain").withRenderingMode(.alwaysTemplate), tintColor:.universalColor2 )
     
-     private lazy var forcastLabel = UILabelFactory.createUILabel(with: .universalColor5, font: UIFont.systemFont(ofSize: 20, weight: .medium), alignment: .center, text: "Hourly forcast")
+    private lazy var forcastLabel = UILabelFactory.createUILabel(with: .universalColor5, font: UIFont.systemFont(ofSize: 20, weight: .medium), alignment: .center, text: "Hourly forcast")
     
     private lazy var refreshButton: UIButton = {
         let button = RoundedButton(type: .custom)
@@ -42,11 +42,11 @@ class WeatherViewController: UIViewController {
     }()
     
     private lazy var upperSeperator: UIView = {
-           let view = UIView()
-           view.backgroundColor = UIColor.universalColor6.withAlphaComponent(0.5)
-           view.translatesAutoresizingMaskIntoConstraints = false
-           return view
-       }()
+        let view = UIView()
+        view.backgroundColor = UIColor.universalColor6.withAlphaComponent(0.5)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
@@ -156,10 +156,9 @@ private extension WeatherViewController {
             .toBottomOf(summeryLabel, constant:25)
             .centerHorizontallyInSuperview()
         
-       forcastLabel
-        .toBottomOf(curvedView, constant:15)
-        .alignEdgesWithSuperview([.left, .right], constant: 20)
-        
+        forcastLabel
+            .toBottomOf(curvedView, constant:15)
+            .alignEdgesWithSuperview([.left, .right], constant: 20)
         
         collectionView
             .toBottomOf(forcastLabel, constant:5)
@@ -175,8 +174,6 @@ private extension WeatherViewController {
             .toBottomOf(collectionView, constant:10)
             .alignEdgesWithSuperview([.right, .left], constants:[20,20])
             .height(constant: 1)
-        
-        
     }
     
     func bind() {
@@ -195,14 +192,14 @@ private extension WeatherViewController {
                 self.refreshButton.isHidden = isLoading
                 self.upperSeperator.isHidden = isLoading
                 
-            if isLoading {
-                self.view.addSubview(self.activityIndicator)
-                self.activityIndicator
-                .centerInSuperView()
-                self.activityIndicator.startAnimating()
-            } else {
-                self.activityIndicator.stopAnimating()
-                self.activityIndicator.removeFromSuperview()
+                if isLoading {
+                    self.view.addSubview(self.activityIndicator)
+                    self.activityIndicator
+                        .centerInSuperView()
+                    self.activityIndicator.startAnimating()
+                } else {
+                    self.activityIndicator.stopAnimating()
+                    self.activityIndicator.removeFromSuperview()
                 }
             }
         }
@@ -215,8 +212,8 @@ private extension WeatherViewController {
                                                         preferredStyle: .alert)
                 for action in alert.actions {
                     alertController.addAction(UIAlertAction(title: action.buttonTitle,
-                    style: .default,
-                    handler: { _ in action.handler?() }))
+                                                            style: .default,
+                                                            handler: { _ in action.handler?() }))
                 }
                 
                 self?.present(alertController, animated: true, completion: nil)
@@ -236,7 +233,7 @@ extension WeatherViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-     let vm = viewModel.tableViewModel(at: indexPath)
+        let vm = viewModel.tableViewModel(at: indexPath)
         
         switch vm.type {
         case .dailyCell:
@@ -252,11 +249,7 @@ extension WeatherViewController: UITableViewDelegate, UITableViewDataSource {
             cell.config(viewModel: viewModel.tableViewModel(at: indexPath) as? DetailTableViewCellViewModelType)
             return cell
         }
-        
-       
     }
-    
-    
 }
 
 extension WeatherViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -281,6 +274,6 @@ extension WeatherViewController: UICollectionViewDelegateFlowLayout {
 //MARK:- DarkMood
 extension WeatherViewController {
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-               curvedView.color = .universalColor5
-           }
+        curvedView.color = .universalColor5
+    }
 }

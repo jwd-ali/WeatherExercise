@@ -9,8 +9,7 @@
 import UIKit
 
 extension UIApplication {
-
-
+    
     @discardableResult
     static func openAppSettings() -> Bool {
         guard
@@ -19,7 +18,7 @@ extension UIApplication {
             else {
                 return false
         }
-
+        
         UIApplication.shared.open(settingsURL)
         return true
     }

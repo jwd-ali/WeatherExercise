@@ -9,7 +9,7 @@
 import Foundation
 protocol SummeryTableViewCellViewModelType {
     var summeryBinder: Binder<String>{ get }
-  
+    
     
 }
 class SummeryTableViewCellViewModel: SummeryTableViewCellViewModelType, WeatherCellItem {
@@ -20,11 +20,13 @@ class SummeryTableViewCellViewModel: SummeryTableViewCellViewModelType, WeatherC
     
     var type: WeatherCellItemType = .summeryCell
     
+    //MARK:- Initialiser
     init(with summery:String) {
         self.summery = summery
         bindValues()
     }
 }
+//MARK:- Bind Values
 private extension SummeryTableViewCellViewModel {
     func bindValues() {
         summeryBinder.value = summery

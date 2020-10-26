@@ -26,11 +26,13 @@ class DailyTableViewCellViewModel: DailyTableViewCellViewModelType, WeatherCellI
     
     var type: WeatherCellItemType = .dailyCell
     
+    //MARK:- Initialiser
     init(with daily:Datum) {
         self.dailyData = daily
         bindValues()
     }
 }
+//MARK:- Bind Values
 private extension DailyTableViewCellViewModel {
     func bindValues() {
         minTempretureBinder.value = ("\(dailyData.temperatureLow?.convertFahrenheitToCelsius() ?? 0)°")

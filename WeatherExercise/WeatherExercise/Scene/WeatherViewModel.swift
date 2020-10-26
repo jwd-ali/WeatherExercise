@@ -9,9 +9,9 @@
 import Foundation
 
 enum WeatherCellItemType {
-   case dailyCell
-   case summeryCell
-   case detailCell
+    case dailyCell
+    case summeryCell
+    case detailCell
 }
 
 protocol WeatherCellItem {
@@ -36,7 +36,7 @@ protocol WeatherViewModelType {
 }
 
 class WeatherViewModel: WeatherViewModelType {
-  
+    
     //MARK:- Propeerties
     private var respostry: WeatherRepositoryType
     private var locationHandler: LocationHandler?
@@ -72,7 +72,7 @@ class WeatherViewModel: WeatherViewModelType {
         self.respostry = respostry
         self.locationHandler = locationHandler
         
-         isLoading.value = true
+        isLoading.value = true
         self.locationHandler?.getCurrentLocation {[weak self] (location, error) in
             if let locationError = error {
                 
@@ -86,15 +86,15 @@ class WeatherViewModel: WeatherViewModelType {
                 case .notDetermined:
                     self?.locationHandler?.requestPermission()
                 }
-              
+                
                 return
             }
             
-           
+            
             if let local = location {
                 self?.latitude = local.coordinate.latitude
                 self?.longitude = local.coordinate.longitude
-               
+                
                 self?.getDetails()
             }
         }
@@ -146,7 +146,7 @@ private extension WeatherViewModel {
     }
 }
 private extension WeatherViewModel {
-     func bindValues() {
+    func bindValues() {
         summeryBinder.value = weatherObject?.currently?.summary?.lowercased() ?? ""
         tempretureBinder.value = ("\(self.weatherObject?.currently?.temperature?.convertFahrenheitToCelsius() ?? 0)°")
         iconBinder.value = weatherObject?.currently?.icon?.rawValue ?? ""
@@ -175,25 +175,25 @@ private extension WeatherViewModel {
 extension WeatherViewModel {
     func numberOfRowsForTableView() -> Int {
         tableViewModels.count
-      }
-      
-      func numberOfRowsForCollectionView() -> Int {
+    }
+    
+    func numberOfRowsForCollectionView() -> Int {
         collectionViewModels.count
-      }
-      
-      func tableViewModel(at indexPath: IndexPath) -> WeatherCellItem {
+    }
+    
+    func tableViewModel(at indexPath: IndexPath) -> WeatherCellItem {
         tableViewModels[indexPath.row]
-      }
-      
-      func collectionViewModel(at indexPath: IndexPath) -> HourlyCollectionViewCellViewModel {
+    }
+    
+    func collectionViewModel(at indexPath: IndexPath) -> HourlyCollectionViewCellViewModel {
         collectionViewModels[indexPath.row]
-      }
+    }
 }
 
 //MARK:- Actions From controller
 extension WeatherViewModel {
     func refreshButtonTapped() {
         getDetails()
-       
+        
     }
 }

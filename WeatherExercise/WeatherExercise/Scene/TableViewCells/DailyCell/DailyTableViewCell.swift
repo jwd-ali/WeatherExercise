@@ -11,7 +11,7 @@ import UIKit
 class DailyTableViewCell: UITableViewCell, DequeueInitializable {
     
     //MARK:- Views
-     private lazy var dayLabel = UILabelFactory.createUILabel(with: .universalColor6, font: UIFont.systemFont(ofSize: 20, weight: .regular), alignment: .left)
+    private lazy var dayLabel = UILabelFactory.createUILabel(with: .universalColor6, font: UIFont.systemFont(ofSize: 20, weight: .regular), alignment: .left)
     
     private lazy var icon = UIImageViewFactory.createImageView(mode: .scaleAspectFit, tintColor:.universalColor6 )
     
@@ -49,6 +49,7 @@ class DailyTableViewCell: UITableViewCell, DequeueInitializable {
     
 }
 
+//MARK:- Setup view
 private extension DailyTableViewCell {
     func setupViews() {
         contentView.addSubview(dayLabel)
@@ -61,9 +62,9 @@ private extension DailyTableViewCell {
             .alignEdgesWithSuperview([.bottom, .top, .left], constants:[10, 10, 20])
         
         icon
-          .centerInSuperView()
-          .height(constant: 30)
-          .width(constant: 30)
+            .centerInSuperView()
+            .height(constant: 30)
+            .width(constant: 30)
         
         tempratureStack
             .alignEdgesWithSuperview([.top, .bottom, .right], constants:[5, 5, 20])
@@ -71,8 +72,8 @@ private extension DailyTableViewCell {
     }
     
 }
+//MARK:- Binding
 private extension DailyTableViewCell {
-    
     func bind() {
         viewModel?.minTempretureBinder.bind({[weak self] temp in DispatchQueue.main.async { self?.minTemperatureLabel.text = temp }})
         viewModel?.maxTempretureBinder.bind({[weak self] temp in DispatchQueue.main.async { self?.maxTemperatureLabel.text = temp }})

@@ -68,7 +68,7 @@ class DetailTableViewCell: UITableViewCell, DequeueInitializable {
     }
     
 }
-
+//MARK:- Setup View
 private extension DetailTableViewCell {
     func setupViews() {
         contentView.addSubview(mainStack)
@@ -80,6 +80,7 @@ private extension DetailTableViewCell {
     }
     
 }
+//MARK:- Bind Values
 private extension DetailTableViewCell {
     
     func bind() {

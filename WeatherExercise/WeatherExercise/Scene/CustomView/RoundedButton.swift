@@ -9,7 +9,7 @@
 import UIKit
 class RoundedButton: UIButton {
     
-     override init(frame: CGRect) {
+    override init(frame: CGRect) {
         super.init(frame: frame)
         layer.shadowOffset = .zero
         layer.shadowColor = UIColor.universalColor3.cgColor
@@ -25,9 +25,7 @@ class RoundedButton: UIButton {
         super.layoutSubviews()
         updateCornerRadius()
     }
-
-  
-
+    
     func updateCornerRadius() {
         layer.cornerRadius = bounds.maxY / 2
     }
